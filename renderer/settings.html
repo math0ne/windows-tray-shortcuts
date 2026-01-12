@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tray Shortcuts Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Tray Shortcuts Manager</h1>
+    </header>
+
+    <section class="shortcuts-list">
+      <h2>Configured Shortcuts</h2>
+      <div id="shortcutsList" class="shortcuts-container">
+        <!-- Populated dynamically -->
+      </div>
+      <button id="addShortcutBtn" class="btn btn-primary">+ Add New Shortcut</button>
+    </section>
+  </div>
+
+  <!-- Add/Edit Modal -->
+  <div id="editorModal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <h2 id="modalTitle">Add Shortcut</h2>
+
+      <form id="shortcutForm">
+        <div class="form-group">
+          <label for="shortcutName">Name:</label>
+          <input type="text" id="shortcutName" placeholder="My Shortcut" required>
+        </div>
+
+        <div class="form-group">
+          <label for="shortcutType">Type:</label>
+          <select id="shortcutType">
+            <option value="keyboard">Keyboard Shortcut</option>
+            <option value="executable">Executable</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="iconSearch">Icon:</label>
+          <div class="icon-type-selector">
+            <label>
+              <input type="radio" name="iconType" value="light" checked>
+              <span>Light Icons</span>
+            </label>
+            <label>
+              <input type="radio" name="iconType" value="dark">
+              <span>Dark Icons</span>
+            </label>
+          </div>
+          <input type="text" id="iconSearch" class="icon-search" placeholder="Search icons...">
+          <div class="icon-selector-wrapper">
+            <select id="iconSelect" class="icon-dropdown" size="8">
+              <!-- Populated with icons -->
+            </select>
+            <div class="icon-preview-box">
+              <img id="iconPreview" class="icon-preview light-icons" src="" alt="Icon preview">
+              <p id="iconName" class="icon-name">No icon selected</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keyboard shortcut fields -->
+        <div id="keyboardFields" class="conditional-fields">
+          <div class="form-group">
+            <label>Modifiers (optional):</label>
+            <div class="modifier-checkboxes">
+              <label><input type="checkbox" class="modifier-key" value="control"> Ctrl</label>
+              <label><input type="checkbox" class="modifier-key" value="shift"> Shift</label>
+              <label><input type="checkbox" class="modifier-key" value="alt"> Alt</label>
+              <label><input type="checkbox" class="modifier-key" value="command"> Win</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mainKey">Main Key:</label>
+            <select id="mainKey">
+              <option value="">Select a key...</option>
+              <optgroup label="Letters">
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+                <option value="e">E</option>
+                <option value="f">F</option>
+                <option value="g">G</option>
+                <option value="h">H</option>
+                <option value="i">I</option>
+                <option value="j">J</option>
+                <option value="k">K</option>
+                <option value="l">L</option>
+                <option value="m">M</option>
+                <option value="n">N</option>
+                <option value="o">O</option>
+                <option value="p">P</option>
+                <option value="q">Q</option>
+                <option value="r">R</option>
+                <option value="s">S</option>
+                <option value="t">T</option>
+                <option value="u">U</option>
+                <option value="v">V</option>
+                <option value="w">W</option>
+                <option value="x">X</option>
+                <option value="y">Y</option>
+                <option value="z">Z</option>
+              </optgroup>
+              <optgroup label="Numbers">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+              </optgroup>
+              <optgroup label="Function Keys">
+                <option value="f1">F1</option>
+                <option value="f2">F2</option>
+                <option value="f3">F3</option>
+                <option value="f4">F4</option>
+                <option value="f5">F5</option>
+                <option value="f6">F6</option>
+                <option value="f7">F7</option>
+                <option value="f8">F8</option>
+                <option value="f9">F9</option>
+                <option value="f10">F10</option>
+                <option value="f11">F11</option>
+                <option value="f12">F12</option>
+              </optgroup>
+              <optgroup label="Special Keys">
+                <option value="escape">Escape</option>
+                <option value="tab">Tab</option>
+                <option value="enter">Enter</option>
+                <option value="space">Space</option>
+                <option value="backspace">Backspace</option>
+                <option value="delete">Delete</option>
+                <option value="insert">Insert</option>
+                <option value="printscreen">Print Screen</option>
+              </optgroup>
+              <optgroup label="Navigation">
+                <option value="home">Home</option>
+                <option value="end">End</option>
+                <option value="pageup">Page Up</option>
+                <option value="pagedown">Page Down</option>
+                <option value="up">Arrow Up</option>
+                <option value="down">Arrow Down</option>
+                <option value="left">Arrow Left</option>
+                <option value="right">Arrow Right</option>
+              </optgroup>
+              <optgroup label="Numpad">
+                <option value="numpad_0">Numpad 0</option>
+                <option value="numpad_1">Numpad 1</option>
+                <option value="numpad_2">Numpad 2</option>
+                <option value="numpad_3">Numpad 3</option>
+                <option value="numpad_4">Numpad 4</option>
+                <option value="numpad_5">Numpad 5</option>
+                <option value="numpad_6">Numpad 6</option>
+                <option value="numpad_7">Numpad 7</option>
+                <option value="numpad_8">Numpad 8</option>
+                <option value="numpad_9">Numpad 9</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preview:</label>
+            <div id="shortcutPreview" class="shortcut-preview">No shortcut selected</div>
+          </div>
+        </div>
+
+        <!-- Executable fields -->
+        <div id="executableFields" class="conditional-fields hidden">
+          <div class="form-group">
+            <label for="exePath">Executable Path:</label>
+            <div class="file-picker">
+              <input type="text" id="exePath" readonly placeholder="Select an executable...">
+              <button type="button" id="browseExeBtn" class="btn btn-secondary">Browse...</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exeArgs">Arguments (optional):</label>
+            <input type="text" id="exeArgs" placeholder="--flag value">
+            <p class="help-text">Space-separated command line arguments</p>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" id="cancelBtn" class="btn btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>

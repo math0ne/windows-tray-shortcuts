@@ -19,7 +19,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "robotjs": "^0.6.0"
+    "robotjs": "^0.6.0",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@electron/rebuild": "^4.0.2",
@@ -41,6 +42,9 @@
     },
     "files": [
       "main.js",
+      "src/**/*",
+      "renderer/**/*",
+      "icons/**/*",
       "icon.png",
       "tray-icon.png"
     ]

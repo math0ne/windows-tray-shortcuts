@@ -1,0 +1,487 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  background: #1c1c1c;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+/* Header */
+header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #3a3a3a;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+/* Shortcuts List */
+.shortcuts-list h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+}
+
+.shortcuts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.shortcut-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px;
+  background: #2a2a2a;
+  border-radius: 8px;
+  border: 1px solid #3a3a3a;
+  transition: box-shadow 0.2s;
+}
+
+.shortcut-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.shortcut-item img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  background: #2a2a2a;
+  padding: 10px;
+  box-sizing: content-box;
+}
+
+.shortcut-item img.dark-icon {
+  background: white;
+}
+
+.shortcut-item img.light-icon {
+  background: #2a2a2a;
+}
+
+.shortcut-info {
+  flex: 1;
+}
+
+.shortcut-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #e0e0e0;
+}
+
+.shortcut-detail {
+  font-size: 13px;
+  color: #a0a0a0;
+}
+
+.shortcut-type {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #1a3a52;
+  color: #6db3f2;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+.shortcut-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: #0366d6;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #0256c2;
+}
+
+.btn-secondary {
+  background: #3a3a3a;
+  color: #e0e0e0;
+}
+
+.btn-secondary:hover {
+  background: #4a4a4a;
+}
+
+.btn-danger {
+  background: #d73a49;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #cb2431;
+}
+
+.btn-success {
+  background: #28a745;
+  color: white;
+}
+
+.btn-success:hover {
+  background: #22863a;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1001;
+}
+
+.modal-content {
+  position: relative;
+  z-index: 1002;
+  background: #2a2a2a;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 650px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content h2 {
+  margin-bottom: 24px;
+  font-size: 24px;
+  color: #e0e0e0;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+.form-group input[type="text"],
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #1a1a1a;
+  color: #e0e0e0;
+  cursor: text;
+}
+
+.form-group select {
+  padding-right: 35px;
+  cursor: pointer;
+}
+
+.form-group input[type="text"] {
+  cursor: text;
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #0366d6;
+  box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.3);
+}
+
+.form-group input[readonly] {
+  background: #2a2a2a;
+  cursor: not-allowed;
+  color: #a0a0a0;
+}
+
+.help-text {
+  font-size: 12px;
+  color: #a0a0a0;
+  margin-top: 6px;
+}
+
+/* Icon Selection */
+.icon-search {
+  margin-bottom: 12px;
+}
+
+.icon-selector-wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.icon-dropdown {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #1a1a1a;
+  color: #e0e0e0;
+  overflow-y: auto;
+}
+
+.icon-dropdown option {
+  padding: 6px;
+  cursor: pointer;
+}
+
+.icon-preview-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  background: #2a2a2a;
+  min-width: 150px;
+}
+
+.icon-preview {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  background: #2a2a2a;
+  padding: 10px;
+  object-fit: none;
+  object-position: center;
+}
+
+.icon-preview.dark-icons {
+  background: white;
+}
+
+.icon-preview.light-icons {
+  background: #2a2a2a;
+}
+
+.icon-name {
+  font-size: 12px;
+  color: #a0a0a0;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* Key Recorder */
+.key-recorder {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.key-recorder input {
+  flex: 1;
+}
+
+.keys-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-height: 32px;
+  padding: 8px;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  background: #1a1a1a;
+}
+
+.key-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: #e3f2fd;
+  color: #1565c0;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #90caf9;
+}
+
+.key-chip-remove {
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.key-chip-remove:hover {
+  opacity: 1;
+}
+
+/* File Picker */
+.file-picker {
+  display: flex;
+  gap: 10px;
+}
+
+.file-picker input {
+  flex: 1;
+}
+
+/* Conditional Fields */
+.conditional-fields.hidden {
+  display: none;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #3a3a3a;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #a0a0a0;
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #e0e0e0;
+}
+
+.empty-state p {
+  font-size: 14px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
+}
+
+/* Icon Type Selector */
+.icon-type-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.icon-type-selector label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+.icon-type-selector input[type="radio"] {
+  cursor: pointer;
+}
+
+/* Modifier Checkboxes */
+.modifier-checkboxes {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.modifier-checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #e0e0e0;
+  font-weight: normal;
+}
+
+.modifier-checkboxes input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Shortcut Preview */
+.shortcut-preview {
+  padding: 12px;
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+}
