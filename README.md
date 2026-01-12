@@ -4,6 +4,7 @@ A flexible Windows system tray application that lets you create multiple customi
 
 ![Screenshot](screenshot/screenshot.png)
 
+![Screenshot](screenshot/screenshot-settings.png)
 
 ```bash
 # Install dependencies
