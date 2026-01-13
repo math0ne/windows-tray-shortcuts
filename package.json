@@ -33,12 +33,18 @@
     "productName": "PowerToys Color Picker Tray",
     "win": {
       "target": [
-        "portable"
+        "portable",
+        "nsis"
       ],
       "icon": "icon.png"
     },
     "portable": {
       "artifactName": "PowerToysColorPickerTray.exe"
+    },
+    "nsis": {
+      "artifactName": "PowerToysColorPickerTray.setup.${version}.exe",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     },
     "files": [
       "main.js",

@@ -59,9 +59,11 @@ jobs:
         body: |
           PowerToys Color Picker Tray ${{ github.ref_name }}
 
-          **Download**: PowerToysColorPickerTray.exe
+          **Download Options**:
+          - **PowerToysColorPickerTray.exe** - Portable version (no installation required)
+          - **PowerToysColorPickerTray.setup.${{ github.ref_name }}.exe** - Installer version
 
-          Just download and run - no installation required!
+          Choose the portable version for a single executable, or the installer for a traditional installation experience.
         files: '*.exe'
         draft: false
         prerelease: false
