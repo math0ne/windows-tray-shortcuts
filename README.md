@@ -6,6 +6,8 @@ A flexible Windows system tray application that lets you create multiple customi
 
 ![Screenshot](screenshot/screenshot-settings.png)
 
+## Development
+
 ```bash
 # Install dependencies
 npm install
