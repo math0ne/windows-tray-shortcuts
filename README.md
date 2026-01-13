@@ -17,16 +17,10 @@ npm start
 
 # Build the portable executable
 npm run build:win
-```
-
-## Building
-
-```bash
-# Install dependencies
-npm install
 
 # Build portable Windows executable
 npm run build:win
+
 ```
 
 Output: `dist/PowerToysColorPickerTray.exe` (portable, no installation required)
